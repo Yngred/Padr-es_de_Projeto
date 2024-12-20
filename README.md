@@ -20,7 +20,22 @@ SOLUÇÃO
 envolve encapsular as operações que precisam ser realizadas em objetos comando, que possuem a responsabilidade de executar essas operações. Esses comandos são independentes e podem ser utilizados em diferentes contextos sem acoplamento direto ao código da lógica do negócio. A ideia é criar uma abstração que represente uma ação ou pedido e permitir que esse comando seja manipulado como um objeto. código e promove 
 EXPLICANDO MEU CÓDIGO:
  A interface Command define um método execute() que qualquer comando deve implementar. A classe Invoker mantém uma referência para um comando e chama o método execute() para realizar a operação.modularidade.
-Como apliquei esses comandos em python? Primeiro, criei uma interface Command usando a classe abstrata ABC do Python, que define o método execute(). Depois, Criei a classe RemoteControl que serve como o invocador. Ela mantém uma referência para um comando e chama o método execute() para realizar a operação e para demonstrar o uso do padrão, criei uma instância de Light e configurei comandos para ligar e desligar a luz.
-## O diagrama principal encontra-se na pasta novaimagem.png
+Como apliquei em python? Primeiro, criei uma interface Command usando a classe abstrata ABC do Python, que define o método execute(). Depois, Criei a classe RemoteControl que serve como o invocador. Ela mantém uma referência para um comando e chama o método execute() para realizar a operação e para demonstrar o uso do padrão, criei uma instância de Light e configurei comandos para ligar e desligar a luz.
+## O diagrama principal encontra-se na pasta  imagem.png
+Padrão estrutural - Facade
+ Facade é um padrão de projeto estrutural que fornece uma interface simplificada para uma biblioteca, um framework, ou qualquer conjunto complexo de classes.
+PROBLEMAS
+Quando precisamos integrar nosso código com uma variedade de objetos de uma biblioteca ou framework sofisticado, enfrentamos desafios significativos. Inicializar cada objeto, gerenciar as dependências entre eles e garantir que os métodos sejam executados na ordem correta pode tornar o código complexo e difícil de entender
+SOLUÇÃO
+Para resolver o problema de integrar nosso código com uma biblioteca complexa, podemos usar o padrão de projeto Fachada. Uma fachada é uma classe que oferece uma interface simplificada para um subsistema complexo, encapsulando a complexidade do mesmo. Em vez de interagir diretamente com todos os componentes do subsistema, que podem ser numerosos e intricados, você cria uma fachada que fornece apenas os métodos e funcionalidades que o cliente realmente precisa.
+EXPLICANDO MEU CÓDIGO:
+A classe VideoConverterFacade serve como a fachada para o subsistema. Ela esconde a complexidade de várias operações de conversão e ajustes do vídeo, oferecendo uma interface simplificada para o usuário final.
+No método convert_video, a fachada encapsula todo o fluxo de trabalho necessário para converter um vídeo:Utilizando a classe VideoLoader, a fachada chama o método load(filename) para carregar o vídeo.
+A classe FormatConverter é utilizada para converter o vídeo para o formato desejado através do método convert(video, format).
+A classe QualityAdjuster é chamada para ajustar a qualidade do vídeo com o método adjust(video).
+Como apliquei em python? Primeiro, crie instâncias de cada classe VideoLoader, FormatConverter e QualityAdjuster, Em seguida, utilize a VideoConverterFacade para realizar o fluxo completo de carregamento, conversão e ajuste de qualidade do vídeo.
+## O diagrama principal encontra-se na pasta  imagem.png
+
+
 
 
